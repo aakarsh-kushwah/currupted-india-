@@ -107,7 +107,6 @@
     z-index: 2;
   }
 
-  /* Adjusted clamp for better mobile responsiveness */
   .hero-headline {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(3rem, 10vw, 8rem);
@@ -178,7 +177,7 @@
   }
 
   .section-inner {
-    max-width: 800px;
+    max-width: 850px;
     margin: 0 auto;
   }
 
@@ -209,6 +208,12 @@
     background: rgba(196,30,42,0.1);
     padding: 0.2rem 0.5rem;
     display: inline-block;
+  }
+  
+  .fury-text {
+    color: #e85060; /* Slightly brighter red for emphasis */
+    font-weight: bold;
+    font-family: 'DM Sans', sans-serif;
   }
 
   /* MARQUEE */
@@ -327,48 +332,30 @@
     100% { transform: translateX(-100%); }
   }
 
-  /* =========================================
-     RESPONSIVE MEDIA QUERIES
-     ========================================= */
-
-  /* Tablets and small desktops */
+  /* RESPONSIVE MEDIA QUERIES */
   @media (max-width: 992px) {
     .live-strip { gap: 2.5rem; }
     .hero { padding: 8rem 1.5rem 3rem; }
     .manifesto-section { padding: 6rem 1.5rem; }
   }
 
-  /* Mobile Devices */
   @media (max-width: 600px) {
     nav { padding: 1rem; }
     .nav-logo { font-size: 1.4rem; }
     .nav-logo span { font-size: 0.7rem; }
-    
     .hero { padding: 7rem 1rem 3rem; }
     .hero-hindi { margin-top: 1.5rem; }
     .hero-sub { font-size: 1rem; margin-top: 1.5rem; }
-    
-    .live-strip { 
-      flex-direction: column; 
-      gap: 2.5rem; 
-      padding: 3rem 1rem; 
-    }
-    
+    .live-strip { flex-direction: column; gap: 2.5rem; padding: 3rem 1rem; }
     .manifesto-section { padding: 4rem 1rem; }
     .section-title { margin-bottom: 2rem; }
-    .manifesto-text { 
-      padding-left: 1.2rem; 
-      border-left-width: 2px; 
-    }
+    .manifesto-text { padding-left: 1.2rem; border-left-width: 2px; }
     .manifesto-text p { margin-bottom: 1.5rem; }
-    
     .alert-ticker { padding: 0.6rem 1rem; }
     .ticker-text { font-size: 0.85rem; }
-    
     footer { padding: 3rem 1rem; }
   }
 
-  /* Extra Small Mobile Devices (e.g., iPhone SE, Galaxy Fold) */
   @media (max-width: 380px) {
     .hero-headline { font-size: 2.8rem; }
     .counter-num { font-size: 2.2rem; }
@@ -439,9 +426,9 @@
       
       <p>क्या यही वो आज़ाद भारत है जिसका सपना हमने देखा था? सरकारें बदलती हैं, बड़े-बड़े वादे होते हैं, 'विकास' और 'नए युग' की बातें होती हैं। लेकिन ज़मीनी हकीकत यह है कि आज भी बिना रिश्वत दिए एक मृत्यु प्रमाण पत्र तक नहीं बनता।</p>
       
-      <p>बेटियां आज भी सुरक्षित नहीं हैं, और जब वो आवाज़ उठाती हैं तो सिस्टम उन्हें ही चुप करा देता है। किसान आज भी कर्ज के बोझ तले आत्महत्या कर रहा है और युवा अपनी डिग्रियों का बंडल लेकर दर-दर की ठोकरें खा रहा है।</p>
-      
-      <p><strong>हम पूछना चाहते हैं इस सिस्टम से, उन नेताओं से, उन बड़े-बड़े अधिकारियों से — क्या तुम्हारी आत्मा मर चुकी है? क्या तुम्हें इन पीड़ितों के आंसू नहीं दिखते? न्याय कब मिलेगा? या ये चीखें हमेशा के लिए इन अंधेरी कोठरियों में दफन हो जाएंगी?</strong></p>
+      <p><strong>अगर यही हाल रहा, तो यह देश आम इंसान के रहने लायक नहीं बचेगा।</strong> जिन पुलिसवालों को वर्दी जनता की रक्षा और काम करने के लिए दी गई थी, वो आज उसी वर्दी की आड़ में पीड़ितों को नोंच खा रहे हैं, रिश्वतें ले रहे हैं और सत्ता की चमचागिरी कर रहे हैं। <span class="fury-text">वर्दी काम करने के लिए दी गई है, रिश्वत खाने और जनता को प्रताड़ित करने के लिए नहीं!</span></p>
+
+      <p>जो पुलिसकर्मी रक्षक के भेष में भक्षक बन चुके हैं, उन पर इतनी खौफनाक और सख्त कार्रवाई होनी चाहिए कि रिश्वत का नाम सुनते ही उनकी रूह कांप जाए। ऐसे गद्दारों को सीधे तौर पर बर्खास्त कर सबसे कठोर सजा दी जानी चाहिए। <strong>इन्हीं चंद दीमकों और भ्रष्ट अधिकारियों की वजह से पूरी व्यवस्था खोखली हो चुकी है, और आज जनता के दिलों में सरकार और सिस्टम के लिए सिर्फ और सिर्फ नफरत भर चुकी है।</strong></p>
     </div>
   </div>
 </section>
