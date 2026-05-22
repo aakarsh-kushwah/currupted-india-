@@ -1,8 +1,4 @@
-यहाँ आपकी आवश्यकता के अनुसार वेबसाइट का बदला हुआ और अत्यधिक भावुक (emotional) संस्करण है। मैंने इसमें से 'शिकायत दर्ज करने' और 'केस देखने' वाले हिस्से पूरी तरह हटा दिए हैं। इसके बजाय, अब यह वेबसाइट एक आम आदमी की पीड़ा, सिस्टम की नाकामी और न्याय के इंतज़ार को बेहद गहरे और मार्मिक ढंग से प्रस्तुत करती है।
 
-इसे सीधे अपने प्रोजेक्ट में कॉपी और इस्तेमाल करें:
-
-```html
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -22,7 +18,7 @@
     --text-muted: #8A8580;
     --text-dim: #555050;
     --gold: #D4A843;
-    --border: rgba(196,30,42,0.15); /* Shifted to a reddish border for darker tone */
+    --border: rgba(196,30,42,0.15);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -39,7 +35,7 @@
     cursor: default;
   }
 
-  /* NOISE TEXTURE - Grittier */
+  /* NOISE TEXTURE */
   body::before {
     content: '';
     position: fixed;
@@ -100,8 +96,7 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background: 
-      radial-gradient(ellipse 70% 60% at 50% 50%, rgba(196,30,42,0.1) 0%, transparent 80%);
+    background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(196,30,42,0.1) 0%, transparent 80%);
   }
 
   .hero-inner {
@@ -112,9 +107,10 @@
     z-index: 2;
   }
 
+  /* Adjusted clamp for better mobile responsiveness */
   .hero-headline {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(4.5rem, 12vw, 10rem);
+    font-size: clamp(3rem, 10vw, 8rem);
     line-height: 0.9;
     letter-spacing: 0.02em;
     color: var(--text);
@@ -125,7 +121,7 @@
 
   .hero-hindi {
     font-family: 'Tiro Devanagari Hindi', serif;
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-size: clamp(1.2rem, 4vw, 2.2rem);
     color: var(--text);
     margin-top: 2rem;
     line-height: 1.5;
@@ -141,33 +137,30 @@
     animation: fadeUp 1s 0.6s ease both;
   }
 
-  /* LIVE COUNTER - Changed to emotional metrics */
+  /* LIVE COUNTER */
   .live-strip {
     background: var(--ash);
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
-    padding: 2rem;
+    padding: 2.5rem 2rem;
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 4rem;
     flex-wrap: wrap;
   }
 
-  .counter-item {
-    text-align: center;
-  }
+  .counter-item { text-align: center; }
 
   .counter-num {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 3rem;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
     color: var(--text-muted);
     line-height: 1;
     display: block;
   }
   
-  .counter-num.red {
-    color: var(--deep-red);
-  }
+  .counter-num.red { color: var(--deep-red); }
 
   .counter-label {
     font-size: 0.75rem;
@@ -178,7 +171,7 @@
     display: block;
   }
 
-  /* MANIFESTO / EMOTIONAL SECTION */
+  /* MANIFESTO SECTION */
   .manifesto-section {
     padding: 8rem 2rem;
     background: linear-gradient(180deg, var(--ink) 0%, var(--ash) 100%);
@@ -191,7 +184,7 @@
 
   .section-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(3rem, 6vw, 5rem);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
     line-height: 1;
     margin-bottom: 3rem;
     text-align: center;
@@ -201,22 +194,21 @@
 
   .manifesto-text {
     font-family: 'Tiro Devanagari Hindi', serif;
-    font-size: 1.4rem;
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
     line-height: 2;
     color: var(--text-muted);
     border-left: 3px solid var(--deep-red);
     padding-left: 2rem;
   }
 
-  .manifesto-text p {
-    margin-bottom: 2rem;
-  }
+  .manifesto-text p { margin-bottom: 2rem; }
 
   .manifesto-text strong {
     color: var(--text);
-    font-weight: normal; /* Serif fonts often look better without bolding in Hindi, just color change */
+    font-weight: normal;
     background: rgba(196,30,42,0.1);
     padding: 0.2rem 0.5rem;
+    display: inline-block;
   }
 
   /* MARQUEE */
@@ -230,7 +222,7 @@
 
   .marquee-track {
     display: flex;
-    gap: 3rem;
+    gap: 2rem;
     animation: marquee 20s linear infinite;
     white-space: nowrap;
   }
@@ -242,7 +234,7 @@
 
   .marquee-item {
     font-family: 'Tiro Devanagari Hindi', serif;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
     color: var(--text);
     letter-spacing: 0.05em;
     display: flex;
@@ -335,12 +327,52 @@
     100% { transform: translateX(-100%); }
   }
 
-  /* RESPONSIVE */
+  /* =========================================
+     RESPONSIVE MEDIA QUERIES
+     ========================================= */
+
+  /* Tablets and small desktops */
+  @media (max-width: 992px) {
+    .live-strip { gap: 2.5rem; }
+    .hero { padding: 8rem 1.5rem 3rem; }
+    .manifesto-section { padding: 6rem 1.5rem; }
+  }
+
+  /* Mobile Devices */
   @media (max-width: 600px) {
     nav { padding: 1rem; }
-    .hero { padding: 8rem 1.5rem 3rem; }
-    .live-strip { gap: 2rem; flex-direction: column; }
-    .manifesto-text { font-size: 1.1rem; padding-left: 1rem; }
+    .nav-logo { font-size: 1.4rem; }
+    .nav-logo span { font-size: 0.7rem; }
+    
+    .hero { padding: 7rem 1rem 3rem; }
+    .hero-hindi { margin-top: 1.5rem; }
+    .hero-sub { font-size: 1rem; margin-top: 1.5rem; }
+    
+    .live-strip { 
+      flex-direction: column; 
+      gap: 2.5rem; 
+      padding: 3rem 1rem; 
+    }
+    
+    .manifesto-section { padding: 4rem 1rem; }
+    .section-title { margin-bottom: 2rem; }
+    .manifesto-text { 
+      padding-left: 1.2rem; 
+      border-left-width: 2px; 
+    }
+    .manifesto-text p { margin-bottom: 1.5rem; }
+    
+    .alert-ticker { padding: 0.6rem 1rem; }
+    .ticker-text { font-size: 0.85rem; }
+    
+    footer { padding: 3rem 1rem; }
+  }
+
+  /* Extra Small Mobile Devices (e.g., iPhone SE, Galaxy Fold) */
+  @media (max-width: 380px) {
+    .hero-headline { font-size: 2.8rem; }
+    .counter-num { font-size: 2.2rem; }
+    .manifesto-text { font-size: 1rem; }
   }
 </style>
 </head>
