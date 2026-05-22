@@ -1,0 +1,490 @@
+यहाँ आपकी आवश्यकता के अनुसार वेबसाइट का बदला हुआ और अत्यधिक भावुक (emotional) संस्करण है। मैंने इसमें से 'शिकायत दर्ज करने' और 'केस देखने' वाले हिस्से पूरी तरह हटा दिए हैं। इसके बजाय, अब यह वेबसाइट एक आम आदमी की पीड़ा, सिस्टम की नाकामी और न्याय के इंतज़ार को बेहद गहरे और मार्मिक ढंग से प्रस्तुत करती है।
+
+इसे सीधे अपने प्रोजेक्ट में कॉपी और इस्तेमाल करें:
+
+```html
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>चीखें और खामोशी — न्याय कब मिलेगा?</title>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --saffron: #FF6B1A;
+    --deep-red: #C41E2A;
+    --ink: #0A0A0A;
+    --ash: #141414;
+    --smoke: #222222;
+    --mist: #333333;
+    --text: #E8E4DC;
+    --text-muted: #8A8580;
+    --text-dim: #555050;
+    --gold: #D4A843;
+    --border: rgba(196,30,42,0.15); /* Shifted to a reddish border for darker tone */
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* NOISE TEXTURE - Grittier */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.5;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(10,10,10,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 1.6rem;
+    color: var(--text);
+    letter-spacing: 0.05em;
+    text-align: center;
+  }
+
+  .nav-logo span {
+    color: var(--deep-red);
+    font-size: 0.8rem;
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 70% 60% at 50% 50%, rgba(196,30,42,0.1) 0%, transparent 80%);
+  }
+
+  .hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4.5rem, 12vw, 10rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    animation: fadeUp 1s 0.2s ease both;
+  }
+
+  .hero-headline .red { color: var(--deep-red); }
+
+  .hero-hindi {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: var(--text);
+    margin-top: 2rem;
+    line-height: 1.5;
+    animation: fadeUp 1s 0.4s ease both;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 2rem auto 0;
+    line-height: 1.8;
+    animation: fadeUp 1s 0.6s ease both;
+  }
+
+  /* LIVE COUNTER - Changed to emotional metrics */
+  .live-strip {
+    background: var(--ash);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+  }
+
+  .counter-item {
+    text-align: center;
+  }
+
+  .counter-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: var(--text-muted);
+    line-height: 1;
+    display: block;
+  }
+  
+  .counter-num.red {
+    color: var(--deep-red);
+  }
+
+  .counter-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-top: 0.5rem;
+    display: block;
+  }
+
+  /* MANIFESTO / EMOTIONAL SECTION */
+  .manifesto-section {
+    padding: 8rem 2rem;
+    background: linear-gradient(180deg, var(--ink) 0%, var(--ash) 100%);
+  }
+
+  .section-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    line-height: 1;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  .section-title .dim { color: var(--text-muted); }
+
+  .manifesto-text {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 1.4rem;
+    line-height: 2;
+    color: var(--text-muted);
+    border-left: 3px solid var(--deep-red);
+    padding-left: 2rem;
+  }
+
+  .manifesto-text p {
+    margin-bottom: 2rem;
+  }
+
+  .manifesto-text strong {
+    color: var(--text);
+    font-weight: normal; /* Serif fonts often look better without bolding in Hindi, just color change */
+    background: rgba(196,30,42,0.1);
+    padding: 0.2rem 0.5rem;
+  }
+
+  /* MARQUEE */
+  .marquee-section {
+    overflow: hidden;
+    padding: 1.5rem 0;
+    background: var(--deep-red);
+    display: flex;
+    gap: 0;
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 3rem;
+    animation: marquee 20s linear infinite;
+    white-space: nowrap;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .marquee-item {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 1.2rem;
+    color: var(--text);
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .marquee-dot {
+    width: 6px;
+    height: 6px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #050505;
+    border-top: 1px solid var(--border);
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .footer-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .footer-brand {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 1.5rem;
+    color: var(--text-dim);
+    margin-bottom: 1rem;
+  }
+
+  .footer-disclaimer {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    line-height: 1.8;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* TICKER */
+  .alert-ticker {
+    background: var(--smoke);
+    padding: 0.8rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    overflow: hidden;
+    border-bottom: 1px solid var(--mist);
+  }
+
+  .ticker-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--deep-red);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .ticker-text {
+    font-size: 0.9rem;
+    font-family: 'Tiro Devanagari Hindi', serif;
+    color: var(--text-muted);
+    white-space: nowrap;
+    animation: ticker 25s linear infinite;
+  }
+
+  @keyframes ticker {
+    0% { transform: translateX(100vw); }
+    100% { transform: translateX(-100%); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    nav { padding: 1rem; }
+    .hero { padding: 8rem 1.5rem 3rem; }
+    .live-strip { gap: 2rem; flex-direction: column; }
+    .manifesto-text { font-size: 1.1rem; padding-left: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ALERT TICKER -->
+<div class="alert-ticker">
+  <span class="ticker-label">कड़वा सच</span>
+  <span class="ticker-text">एक और दिन, एक और झूठा वादा | अदालतों की चौखट पर न्याय की आस में बूढ़े होते माँ-बाप | क्या कोई है जो हमारी आवाज़ सुनेगा? | सत्ता के गलियारों में आम आदमी की चीख गुम है...</span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    आवाज़
+    <span>The Silent Tears of India</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <h1 class="hero-headline">
+      NYAY<br>
+      <span class="red">KAB MILEGA?</span>
+    </h1>
+    <p class="hero-hindi">
+      इस देश में भ्रष्टाचार कब खत्म होगा?<br>
+      क्या वर्तमान सरकार या कोई भी व्यवस्था जनता की आवाज़ सुनने वाली है?
+    </p>
+    <p class="hero-sub">
+      पीड़ित आज भी थानों, अदालतों और सरकारी दफ्तरों के बाहर रो रहे हैं। फाइलें धूल खा रही हैं और रक्षक ही भक्षक बन बैठे हैं। क्या सच में कभी कोई बदलाव आएगा, या हम बस एक वोट बैंक बनकर ऐसे ही तिल-तिल कर मरते रहेंगे?
+    </p>
+  </div>
+</section>
+
+<!-- LIVE COUNTERS -->
+<div class="live-strip">
+  <div class="counter-item reveal">
+    <span class="counter-num" id="c1">0</span><span class="counter-num" style="display:inline;">M+</span>
+    <span class="counter-label">Pending Court Cases</span>
+  </div>
+  <div class="counter-item reveal">
+    <span class="counter-num">अनंत</span>
+    <span class="counter-label">टूटे हुए वादे</span>
+  </div>
+  <div class="counter-item reveal">
+    <span class="counter-num red">0</span>
+    <span class="counter-label">जवाबदेही (Accountability)</span>
+  </div>
+  <div class="counter-item reveal">
+    <span class="counter-num" id="c2">0</span><span class="counter-num" style="display:inline;">%</span>
+    <span class="counter-label">अंडरट्रायल कैदी जो न्याय को तरस रहे हैं</span>
+  </div>
+</div>
+
+<!-- MANIFESTO SECTION -->
+<section class="manifesto-section">
+  <div class="section-inner">
+    <h2 class="section-title reveal">KAB TAK <span class="dim">SAHENGE?</span></h2>
+    <div class="manifesto-text reveal">
+      <p>एक आम आदमी जब अपना हक मांगने जाता है, तो उसे नियमों की जंजीरों में बांध दिया जाता है। एक गरीब की एफआईआर (FIR) दर्ज होने में महीनों लग जाते हैं, जूतियां घिस जाती हैं, जबकि एक रसूखदार का काम एक फोन कॉल पर हो जाता है।</p>
+      
+      <p>क्या यही वो आज़ाद भारत है जिसका सपना हमने देखा था? सरकारें बदलती हैं, बड़े-बड़े वादे होते हैं, 'विकास' और 'नए युग' की बातें होती हैं। लेकिन ज़मीनी हकीकत यह है कि आज भी बिना रिश्वत दिए एक मृत्यु प्रमाण पत्र तक नहीं बनता।</p>
+      
+      <p>बेटियां आज भी सुरक्षित नहीं हैं, और जब वो आवाज़ उठाती हैं तो सिस्टम उन्हें ही चुप करा देता है। किसान आज भी कर्ज के बोझ तले आत्महत्या कर रहा है और युवा अपनी डिग्रियों का बंडल लेकर दर-दर की ठोकरें खा रहा है।</p>
+      
+      <p><strong>हम पूछना चाहते हैं इस सिस्टम से, उन नेताओं से, उन बड़े-बड़े अधिकारियों से — क्या तुम्हारी आत्मा मर चुकी है? क्या तुम्हें इन पीड़ितों के आंसू नहीं दिखते? न्याय कब मिलेगा? या ये चीखें हमेशा के लिए इन अंधेरी कोठरियों में दफन हो जाएंगी?</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item">सिस्टम अंधा है <div class="marquee-dot"></div></div>
+    <div class="marquee-item">फाइलों में दबता सच <div class="marquee-dot"></div></div>
+    <div class="marquee-item">आम आदमी की हार <div class="marquee-dot"></div></div>
+    <div class="marquee-item">कुर्सी का खेल <div class="marquee-dot"></div></div>
+    <div class="marquee-item">इंसाफ की भीख <div class="marquee-dot"></div></div>
+    <div class="marquee-item">रक्षक बने भक्षक <div class="marquee-dot"></div></div>
+    <!-- Repeat for infinite scroll effect -->
+    <div class="marquee-item">सिस्टम अंधा है <div class="marquee-dot"></div></div>
+    <div class="marquee-item">फाइलों में दबता सच <div class="marquee-dot"></div></div>
+    <div class="marquee-item">आम आदमी की हार <div class="marquee-dot"></div></div>
+    <div class="marquee-item">कुर्सी का खेल <div class="marquee-dot"></div></div>
+    <div class="marquee-item">इंसाफ की भीख <div class="marquee-dot"></div></div>
+    <div class="marquee-item">रक्षक बने भक्षक <div class="marquee-dot"></div></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">एक अधूरी आस</div>
+    <p class="footer-disclaimer">
+      यह पेज किसी एक व्यक्ति या पार्टी के खिलाफ नहीं है। यह उस पूरे भ्रष्ट सिस्टम के खिलाफ एक चीख है, जिसने आम नागरिक को बेबस कर दिया है। जब तक हर पीड़ित को न्याय नहीं मिल जाता, यह सवाल ज़िंदा रहेगा — न्याय कब मिलेगा?
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Simple Counter animation for specific numbers
+  function animateCounter(el, target, duration) {
+    let start = 0;
+    const step = target / (duration / 16);
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= target) { start = target; clearInterval(timer); }
+      el.textContent = Math.floor(start);
+    }, 16);
+  }
+
+  let countersStarted = false;
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !countersStarted) {
+        countersStarted = true;
+        // 50 Million cases pending
+        animateCounter(document.getElementById('c1'), 50, 2500); 
+        // 75% undertrials
+        animateCounter(document.getElementById('c2'), 75, 2000); 
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const strip = document.querySelector('.live-strip');
+  if (strip) counterObserver.observe(strip);
+
+  // Reveal elements on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = (i % 3) * 0.15 + 's';
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  reveals.forEach(r => revealObserver.observe(r));
+</script>
+</body>
+</html>
+
+```
